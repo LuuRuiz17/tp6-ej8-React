@@ -59,6 +59,11 @@ main {
   animation: animarBorde 2s infinite alternate-reverse;
 }
 
+.bg-form .btn-enviar{
+  background-color: rgb(252, 70, 143);
+  border: none;
+}
+
 @keyframes animarBorde {
   0% {
     border-color: pink;

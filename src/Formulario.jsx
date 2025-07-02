@@ -2,7 +2,7 @@ import { Form, Button } from "react-bootstrap";
 
 const Formulario = () => {
     return (
-        <Form className="bg-form p-3 rounded mx-auto my-4">
+        <Form className="bg-form p-3 rounded mx-auto my-4 d-flex flex-column">
             <Form.Group className="mb-3 campoForm" controlId="formNombre">
                 <Form.Label className="label-color">Nombre</Form.Label>
                 <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" />
@@ -22,7 +22,7 @@ const Formulario = () => {
                     We'll never share your email with anyone else.
                 </Form.Text> */}
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="btn-enviar w-50 mx-auto justify-content-center" type="submit">
                 Enviar
             </Button>
         </Form>
