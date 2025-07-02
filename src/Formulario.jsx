@@ -10,14 +10,20 @@ const Formulario = () => {
         reset
     } = useForm()
 
-    const guardarDatos = () => {
-        Swal.fire({
-            title: "¡Datos validados!",
-            icon: "success",
-            timer: 2000,
-            confirmButtonColor: '#ff5e99',
-            confirmButton
-        });
+    const guardarDatos = (dato) => {
+        if (dato.inputNombre && dato.inputApellido && dato.inputDNI && dato.inputEmail) {
+            Swal.fire({
+                title: "¡Datos enviados!",
+                icon: "success",
+                draggable: true
+            });
+        } else {
+            Swal.fire({
+                title: "Completa todos los datos",
+                icon: "error",
+                draggable: true
+            });
+        }
         reset()
     }
 
@@ -27,8 +33,6 @@ const Formulario = () => {
                 <Form.Label className="label-color">Nombre</Form.Label>
                 <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" {...register('inputNombre',
                     {
-                        required: 'El nombre es un campo obligatorio',
-
                         minLength: {
                             value: 3,
                             message: "El nombre debe tener como mínimo 3 caracteres."
@@ -45,7 +49,7 @@ const Formulario = () => {
             <Form.Group className="mt-2 campoForm" controlId="formApellido">
                 <Form.Label className="label-color">Apellido</Form.Label>
                 <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" {...register('inputApellido', {
-                    required: 'El apellido es un campo obligatorio',
+                    // required: 'El apellido es un campo obligatorio',
                     minLength: {
                         value: 3,
                         message: 'El apellido debe tener como mínimo 3 caracteres.'
@@ -62,7 +66,7 @@ const Formulario = () => {
             <Form.Group className="mt-2 campoForm" controlId="formDNI">
                 <Form.Label className="label-color">DNI</Form.Label>
                 <Form.Control className="input-color" type="number" placeholder="Ej: Luciana" {...register('inputDNI', {
-                    required: 'El DNI es un campo obligatorio',
+                    // required: 'El DNI es un campo obligatorio',
                     pattern: {
                         value: /^\d{7,8}$/,
                         message: 'Ingresa un DNI válido. Por ejemplo: 45196868'
@@ -75,7 +79,7 @@ const Formulario = () => {
             <Form.Group className="mt-2 campoForm" controlId="formEmail">
                 <Form.Label className="label-color">Email address</Form.Label>
                 <Form.Control className="input-color" type="email" placeholder="Ej: lucianaruiz.934@gmail.com" {...register('inputEmail', {
-                    required: 'El correo es un campo obligatorio',
+                    // required: 'El correo es un campo obligatorio',
                     pattern: {
                         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                         message: 'Ingresa un email válido. Por ejemplo: lucianaruiz.934@gmail.com'
