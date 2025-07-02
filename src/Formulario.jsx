@@ -1,39 +1,92 @@
 import { Form, Button } from "react-bootstrap";
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm } from "react-hook-form"
+import Swal from 'sweetalert2'
 
 const Formulario = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset
+    } = useForm()
 
-     const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+    const guardarDatos = () => {
+        Swal.fire({
+            title: "¡Datos validados!",
+            icon: "success",
+            timer: 2000,
+            confirmButtonColor: '#ff5e99',
+        });
+        reset()
+    }
 
     return (
-        <Form className="bg-form p-3 rounded mx-auto my-4 d-flex flex-column {}">
-            <Form.Group className="mb-3 campoForm" controlId="formNombre">
+        <Form className="bg-form p-3 rounded mx-auto my-4 d-flex flex-column" onSubmit={handleSubmit(guardarDatos)}>
+            <Form.Group className="campoForm" controlId="formNombre">
                 <Form.Label className="label-color">Nombre</Form.Label>
-                <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" />
+                <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" {...register('inputNombre',
+                    {
+                        required: 'El nombre es un campo obligatorio',
+
+                        minLength: {
+                            value: 3,
+                            message: "El nombre debe tener como mínimo 3 caracteres."
+                        },
+                        maxLength: {
+                            value: 30,
+                            message: "El nombre debe tener como máximo 30 caracteres."
+                        }
+                    })} />
             </Form.Group>
-            <Form.Group className="mb-3 campoForm" controlId="formApellido">
+            <Form.Text className="text-danger">
+                {errors.inputNombre?.message}
+            </Form.Text>
+            <Form.Group className="mt-2 campoForm" controlId="formApellido">
                 <Form.Label className="label-color">Apellido</Form.Label>
-                <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" />
+                <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" {...register('inputApellido', {
+                    required: 'El apellido es un campo obligatorio',
+                    minLength: {
+                        value: 3,
+                        message: 'El apellido debe tener como mínimo 3 caracteres.'
+                    },
+                    maxLength: {
+                        value: 30,
+                        message: 'El apellido debe tener como máximo 30 caracteres'
+                    }
+                })} />
             </Form.Group>
-            <Form.Group className="mb-3 campoForm" controlId="formDNI">
+            <Form.Text className="text-danger">
+                {errors.inputApellido?.message}
+            </Form.Text>
+            <Form.Group className="mt-2 campoForm" controlId="formDNI">
                 <Form.Label className="label-color">DNI</Form.Label>
-                <Form.Control className="input-color" type="number" placeholder="Ej: Luciana" />
+                <Form.Control className="input-color" type="number" placeholder="Ej: Luciana" {...register('inputDNI', {
+                    required: 'El DNI es un campo obligatorio',
+                    pattern: {
+                        value: /^\d{7,8}$/,
+                        message: 'Ingresa un DNI válido. Por ejemplo: 45196868'
+                    }
+                })} />
             </Form.Group>
-            <Form.Group className="mb-3 campoForm" controlId="formEmail">
+            <Form.Text className="text-danger">
+                {errors.inputDNI?.message}
+            </Form.Text>
+            <Form.Group className="mt-2 campoForm" controlId="formEmail">
                 <Form.Label className="label-color">Email address</Form.Label>
-                <Form.Control className="input-color" type="email" placeholder="Ej: lucianaruiz.934@gmail.com" />
-                {/* <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text> */}
+                <Form.Control className="input-color" type="email" placeholder="Ej: lucianaruiz.934@gmail.com" {...register('inputEmail', {
+                    required: 'El correo es un campo obligatorio',
+                    pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: 'Ingresa un email válido. Por ejemplo: lucianaruiz.934@gmail.com'
+                    }
+                })} />
             </Form.Group>
-            <Button className="btn-enviar mx-auto justify-content-center my-2" type="submit">
+            <Form.Text className="text-danger">
+                {errors.inputEmail?.message}
+            </Form.Text>
+            <button className="btn-enviar mx-auto justify-content-center mt-3 p-2 rounded" type="submit">
                 Enviar
-            </Button>
+            </button>
         </Form>
     );
 };

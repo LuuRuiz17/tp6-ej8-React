@@ -46,9 +46,8 @@ main {
 }
 
 .campoForm .input-color:focus {
-  /* outline: none; */
-  border: 2px solid #fd78a9; 
-  box-shadow: 0 0 3px #fd78a9;
+  border: 1px solid #fd78a9; 
+  box-shadow: 0 0 5px #fd78a9;
 }
 
 .label-color {
@@ -62,14 +61,15 @@ main {
   animation: animarBorde 2s infinite alternate-reverse;
 }
 
-.bg-form .btn-enviar {
+.btn-enviar {
+  color: white;
   background-color: rgb(252, 70, 143);
   border: 1px solid rgb(252, 70, 143);
 }
 
-.bg-form .btn-enviar:hover {
-  background-color: white;
+.btn-enviar:hover {
   color: rgb(252, 70, 143);
+  background-color: white;
   border: 1px solid rgb(252, 70, 143);
 }
 
@@ -90,7 +90,7 @@ main {
     width: 50% !important;
   }
   .btn-enviar {
-    width: 50%;
+    width: 25%;
   }
 }
 
@@ -99,6 +99,6 @@ main {
     width: 75%;
   }
   .btn-enviar {
-    width: 25%;
+    width: 50%;
   }
 }
