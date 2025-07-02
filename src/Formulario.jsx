@@ -16,6 +16,7 @@ const Formulario = () => {
             icon: "success",
             timer: 2000,
             confirmButtonColor: '#ff5e99',
+            confirmButton
         });
         reset()
     }
