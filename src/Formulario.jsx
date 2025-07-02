@@ -1,8 +1,17 @@
 import { Form, Button } from "react-bootstrap";
+import { useForm, SubmitHandler } from "react-hook-form"
 
 const Formulario = () => {
+
+     const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
     return (
-        <Form className="bg-form p-3 rounded mx-auto my-4 d-flex flex-column">
+        <Form className="bg-form p-3 rounded mx-auto my-4 d-flex flex-column {}">
             <Form.Group className="mb-3 campoForm" controlId="formNombre">
                 <Form.Label className="label-color">Nombre</Form.Label>
                 <Form.Control className="input-color" type="text" placeholder="Ej: Luciana" />
@@ -22,7 +31,7 @@ const Formulario = () => {
                     We'll never share your email with anyone else.
                 </Form.Text> */}
             </Form.Group>
-            <Button className="btn-enviar w-50 mx-auto justify-content-center" type="submit">
+            <Button className="btn-enviar mx-auto justify-content-center my-2" type="submit">
                 Enviar
             </Button>
         </Form>

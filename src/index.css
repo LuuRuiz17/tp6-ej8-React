@@ -17,11 +17,8 @@ main {
   font-size: xx-large;
 }
 
-@keyframes titulo {
+@keyframes animarTitulo {
   0% {
-    color: rgb(249, 99, 124);
-  }
-  25% {
     color: rgb(255, 84, 153);
   }
   50% {
@@ -36,7 +33,7 @@ main {
 }
 
 .color-loop {
-  animation: titulo infinite 2s alternate-reverse;
+  animation: animarTitulo infinite 2s alternate-reverse;
 }
 
 .campoForm .input-color {
@@ -44,11 +41,17 @@ main {
   border: 1px solid rgb(252, 125, 147);
 }
 
-.campoForm .input-color::placeholder{
-  color: rgba(0, 0, 0, 0.300);
+.campoForm .input-color::placeholder {
+  color: rgba(0, 0, 0, 0.3);
 }
 
-.label-color{
+.campoForm .input-color:focus {
+  /* outline: none; */
+  border: 2px solid #fd78a9; 
+  box-shadow: 0 0 3px #fd78a9;
+}
+
+.label-color {
   font-weight: bold;
   color: rgb(255, 26, 117);
 }
@@ -59,9 +62,15 @@ main {
   animation: animarBorde 2s infinite alternate-reverse;
 }
 
-.bg-form .btn-enviar{
+.bg-form .btn-enviar {
   background-color: rgb(252, 70, 143);
-  border: none;
+  border: 1px solid rgb(252, 70, 143);
+}
+
+.bg-form .btn-enviar:hover {
+  background-color: white;
+  color: rgb(252, 70, 143);
+  border: 1px solid rgb(252, 70, 143);
 }
 
 @keyframes animarBorde {
@@ -77,13 +86,19 @@ main {
 }
 
 @media (min-width: 992px) {
-    .bg-form{
-      width: 50%!important;
-    }
+  .bg-form {
+    width: 50% !important;
+  }
+  .btn-enviar {
+    width: 50%;
+  }
 }
 
 @media (max-width: 991px) {
-      .bg-form{
-      width: 75%;
-    }  
+  .bg-form {
+    width: 75%;
+  }
+  .btn-enviar {
+    width: 25%;
+  }
 }
