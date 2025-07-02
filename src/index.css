@@ -1,0 +1,84 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(253, 155, 172);
+}
+
+main {
+  flex-grow: 1;
+}
+
+.rosa {
+  background-color: rgb(247, 55, 132);
+}
+
+.titulo {
+  font-size: xx-large;
+}
+
+@keyframes titulo {
+  0% {
+    color: rgb(249, 99, 124);
+  }
+  25% {
+    color: rgb(255, 84, 153);
+  }
+  50% {
+    color: rgb(252, 70, 143);
+  }
+  75% {
+    color: rgb(253, 48, 130);
+  }
+  100% {
+    color: rgb(255, 26, 117);
+  }
+}
+
+.color-loop {
+  animation: titulo infinite 2s alternate-reverse;
+}
+
+.campoForm .input-color {
+  background-color: rgb(255, 226, 231);
+  border: 1px solid rgb(252, 125, 147);
+}
+
+.campoForm .input-color::placeholder{
+  color: rgba(0, 0, 0, 0.300);
+}
+
+.label-color{
+  font-weight: bold;
+  color: rgb(255, 26, 117);
+}
+
+.bg-form {
+  background-color: pink;
+  border: 2px groove rgb(249, 99, 124);
+  animation: animarBorde 2s infinite alternate-reverse;
+}
+
+@keyframes animarBorde {
+  0% {
+    border-color: pink;
+  }
+  50% {
+    border-color: rgb(252, 70, 143);
+  }
+  100% {
+    border-color: rgb(255, 26, 117);
+  }
+}
+
+@media (min-width: 992px) {
+    .bg-form{
+      width: 50%!important;
+    }
+}
+
+@media (max-width: 991px) {
+      .bg-form{
+      width: 75%;
+    }  
+}
